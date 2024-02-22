@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:super_tooltip/super_tooltip.dart';
 
 void main() => runApp(const MainApp());
-
+const Color annotationUp = Color(0xD91B4AC3);
+const Color annotationDown = Color(0xCC011C4F);
 class MainApp extends StatelessWidget {
   const MainApp({Key? key}) : super(key: key);
 
@@ -47,6 +48,7 @@ class TargetWidget extends StatefulWidget {
 }
 
 class _TargetWidgetState extends State<TargetWidget> {
+
   final _controller = SuperTooltipController();
   Future<bool> _willPopCallback() async {
     // If the tooltip is open we don't pop the page on a backbutton press
@@ -70,7 +72,16 @@ class _TargetWidgetState extends State<TargetWidget> {
           showBarrier: true,
           controller: _controller,
           popupDirection: TooltipDirection.down,
-          backgroundColor: Color(0xff2f2d2f),
+          gradient: LinearGradient(
+              begin: Alignment.topCenter, // Start point
+              end: Alignment.bottomCenter, // End point
+              colors: [
+                annotationUp, // First color
+                annotationUp, // First color
+                annotationUp, // First color
+                annotationDown, // Second color
+                annotationDown, // Second color
+              ]),
           left: 30,
           right: 30,
           arrowTipDistance: 15.0,

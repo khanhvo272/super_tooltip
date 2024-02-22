@@ -33,6 +33,7 @@ class SuperTooltip extends StatefulWidget {
   final Color borderColor;
   final BoxConstraints constraints;
   final Color? backgroundColor;
+  final Gradient? gradient;
   final Decoration? decoration;
   final double elevation;
   final Duration fadeInDuration;
@@ -117,7 +118,7 @@ class SuperTooltip extends StatefulWidget {
     this.hideTooltipOnTap = false,
     this.sigmaX = 5.0,
     this.sigmaY = 5.0,
-    this.showDropBoxFilter = false,
+    this.showDropBoxFilter = false, this.gradient,
   })  : assert(showDropBoxFilter ? showBarrier ?? false : true),
         super(key: key);
 
@@ -377,7 +378,7 @@ class _SuperTooltipState extends State<SuperTooltip>
                         ),
                         decoration: widget.decoration ??
                             ShapeDecoration(
-                              color: backgroundColor,
+                              gradient: widget.gradient,
                               shadows: hasShadow
                                   ? <BoxShadow>[
                                       BoxShadow(
